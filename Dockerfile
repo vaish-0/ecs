@@ -1,4 +1,4 @@
-FROM ubuntu:
+FROM ubuntu
 
 #RUN yum update -y && yum install httpd httpd-tools -y
 RUN apt-get update -y && apt-get install apache2 -y && apt-get install apache2-utils -y
