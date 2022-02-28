@@ -9,10 +9,10 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t prasad:latest .
-      - docker tag prasad:latest public.ecr.aws/q1y0j8u6/prasad:latest    
+      - docker build -t apache:latest .
+      - docker tag apache:latest public.ecr.aws/q1y0j8u6/apache:latest    
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push public.ecr.aws/q1y0j8u6/prasad:latest
+      - docker push public.ecr.aws/q1y0j8u6/apache:latest
