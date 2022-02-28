@@ -1,9 +1,10 @@
-FROM centos:7 
+FROM ubuntu:
 
-RUN yum update -y && yum install httpd httpd-tools -y
+#RUN yum update -y && yum install httpd httpd-tools -y
+RUN apt-get update -y && apt-get install apache2 -y && apt-get install apache2-utils -y
 WORKDIR /var/www/html/
 COPY index.html . 
 EXPOSE 80
-RUN yum install net-tools -y
+CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"] 
  
-CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
+#CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
