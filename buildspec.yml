@@ -9,11 +9,10 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t apache:latest .
-      - docker tag apache:latest public.ecr.aws/q1y0j8u6/apache:latest    
+      - docker build -t http:latest .
+      - docker tag http:latest 987240292938.dkr.ecr.ap-south-1.amazonaws.com/http:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
-      - docker push public.ecr.aws/q1y0j8u6/apache:latest
+      - docker push 987240292938.dkr.ecr.ap-south-1.amazonaws.com/http:latest
