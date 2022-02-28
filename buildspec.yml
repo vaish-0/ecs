@@ -1,18 +1,18 @@
---- 
+version: 0.2
+
 phases:
-  build: 
-    commands: 
-      - "echo Build started on `date`"
-      - "echo Building the Docker image..."
-      - "docker build -t apache/latest ."
-      - "docker tag apache/latest public.ecr.aws/q1y0j8u6/prasad:latest:latest"
-  post_build: 
-    commands: 
-      - "echo Build completed on `date`"
-      - "echo Pushing the Docker image..."
-      - "docker push public.ecr.aws/q1y0j8u6/prasad:latest"
-  pre_build: 
-    commands: 
-      - "echo Logging in to Docker Hub..."
-      - "aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/q1y0j8u6"
-version: 0.1
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...          
+      - docker build -t prasad:latest .
+      - docker tag prasad:latest public.ecr.aws/q1y0j8u6/prasad:latest    
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker image...
+      - docker push public.ecr.aws/q1y0j8u6/prasad:latest
