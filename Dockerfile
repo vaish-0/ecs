@@ -9,4 +9,5 @@ RUN \
 
 WORKDIR /var/www/html/
 COPY index.html .
+EXPOSE 80
 CMD ["/usr/sbin/apache2ctl", "-DFOREGROUND"]
