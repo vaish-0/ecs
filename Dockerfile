@@ -1,4 +1,4 @@
-FROM centos:7
+FROM 987240292938.dkr.ecr.ap-south-1.amazonaws.com/http:centos7
 RUN yum update -y && yum install httpd httpd-tools -y
 #RUN apt-get update -y && apt-get install apache2 tzdata -y && apt-get install apache2-utils -y
 WORKDIR /var/www/html/
