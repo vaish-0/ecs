@@ -4,6 +4,8 @@ files:
   - source: /index.html
     destination: /var/www/html/
 hooks:
+  ApplicationStop:
+    - location: scripts/kill_container.sh
   BeforeInstall:
     - location: scripts/before_script.sh
       timeout: 300
