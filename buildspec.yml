@@ -8,7 +8,7 @@ phases:
       - REPOSITORY_URI=987240292938.dkr.ecr.ap-south-1.amazonaws.com/http
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
       - yum install docker -y
-      - service docker start
+      - sudo service docker start
   build:
     commands:
       - ls -lrt
