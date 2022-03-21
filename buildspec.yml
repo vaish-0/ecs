@@ -7,12 +7,13 @@ phases:
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
       - REPOSITORY_URI=987240292938.dkr.ecr.ap-south-1.amazonaws.com/http
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
-      - yum install docker -y
-      - sudo service docker start
+
   build:
     commands:
       - ls -lrt
       - docker --version
+      - sudo yum install docker -y
+      - sudo service docker start
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t http:latest .
