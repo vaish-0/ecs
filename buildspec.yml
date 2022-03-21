@@ -12,8 +12,7 @@ phases:
     commands:
       - ls -lrt
       - docker --version
-      - sudo yum install docker -y
-      - sudo service docker start
+      
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t http:latest .
