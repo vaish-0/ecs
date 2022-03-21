@@ -21,8 +21,8 @@ phases:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push 987240292938.dkr.ecr.ap-south-1.amazonaws.com/http:latest
-      - printf '[{"name":"fargatecontainer","imageUri":"%s"}]' $REPOSITORY_URI:latest > imagedefinitions.json
-      - cat imagedefinitions.json
+      - printf '[{"name":"fargatecontainer","imageUri":"%s"}]' $REPOSITORY_URI:latest > imagedefinations.json
+      - cat imagedefinations.json
 artifacts:
-  files: imagedefinitions.json
+  files: imagedefinations.json
 
