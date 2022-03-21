@@ -12,7 +12,6 @@ phases:
     commands:
       - ls -lrt
       - docker --version
-
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t http:latest .
