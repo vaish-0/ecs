@@ -9,6 +9,17 @@ pipeline {
             git 'https://github.com/ravdy/nodejs-demo.git'
             }
         }
+            stage('Code Quality Check via SonarQube') {
+           steps{
+           script{ 
+          def scannerHome = tool 'Sonarqube-scanner';
+          withSonarQubeEnv("Sonarqube") {
+               sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=java-01 -Dsonar.sources=. -Dsonar.css.node=. -Dsonar.host.url=http://52.66.136.187:9000/ -Dsonar.login=71c88ab877007ba1b88fdfd0d2dddef826e6ec64 -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info"
+               }
+		   
+             }
+           }
+         }
 
         stage('Build docker image') {
             steps {  
